@@ -14,10 +14,16 @@ received is an even number.
 
 HINT: Use the modulo operator (%) Google it! 😊
 ******************************************************************************/
-
-const oddOrEven = () => {
-  //your code here
+//your code here
+const oddOrEven = (num) => {
+  if (num % 2 === 0) {
+    return "Even";
+  } else {
+    return "Odd";
+  }
 };
+
+console.log(oddOrEven(3));
 
 /******************************************************************************
 2.
@@ -31,9 +37,12 @@ Example: "This is cool" should return "THIS IS COOL!"
 
 ******************************************************************************/
 
-function makeMeLoud() {
+function makeMeLoud(myString) {
   //your code here
+  let upperCasetxt = myString.toUpperCase() + "!";
+  return upperCasetxt;
 }
+console.log(makeMeLoud("This is cool"));
 
 /******************************************************************************
 3.
@@ -56,9 +65,21 @@ The function should return:
 
 ******************************************************************************/
 
-const greeter = () => {
+const greeter = (userName, dayTime) => {
   //your code here
+  if (dayTime < 0 || dayTime > 23) {
+    return "Invalid time";
+  } else if (dayTime >= 0 && dayTime <= 5) {
+    return "Good night " + userName;
+  } else if (dayTime >= 6 && dayTime <= 11) {
+    return "Good morning " + userName;
+  } else if (dayTime >= 12 && dayTime <= 17) {
+    return "Good day " + userName;
+  } else if (dayTime >= 18 && dayTime <= 23) {
+    return "Good evening " + userName;
+  }
 };
+console.log(greeter("Sarah", 23));
 
 /******************************************************************************
 4.
@@ -74,9 +95,13 @@ Example 2: ["One", "Two", "Three", "Four", "Five", "Six"] should return
 ["Two", "Three", "Four", "Five"]
 ******************************************************************************/
 
-function arrayTrimmer() {
+function arrayTrimmer(myArray) {
   //your code here
+  myArray.shift();
+  myArray.pop();
+  return myArray;
 }
+console.log(arrayTrimmer(["One", "Two", "Three", "Four", "Five", "Six"]));
 
 /******************************************************************************
 5.
@@ -97,9 +122,13 @@ Example3: "   hard        " should return "fun"
 
 ******************************************************************************/
 
-const cleanAndFun = () => {
+const cleanAndFun = (inputText) => {
   //your code here
+  let editedText = inputText.replace("hard", "fun");
+  editedText = editedText.trim();
+  return editedText;
 };
+console.log(cleanAndFun("   hard        "));
 
 /******************************************************************************
 6.
@@ -121,9 +150,24 @@ Use array methods to do the following:
  Return the resulting array.
 ******************************************************************************/
 
-function marvelEditor() {
+function marvelEditor(inputArray) {
   //your code here
+  inputArray.shift();
+  inputArray[2] = "Skrull";
+  inputArray.splice(0, 2, "Captain America");
+  let editedArray = inputArray.join("💪");
+  return editedArray;
 }
+console.log(
+  marvelEditor([
+    "Spider-Man",
+    "Thor",
+    "Hulk",
+    "Doctor Strange",
+    "Iron Man",
+    "Black Widow",
+  ])
+);
 
 /******************************************************************************
 7.
@@ -152,9 +196,24 @@ Return "😎Primitive values only😎"
 
 ******************************************************************************/
 
-function coolMaker() {
-  //your code here
+function coolMaker(inputParam) {
+  if (typeof inputParam === "string") {
+    //let newString = "😎" + inputParam + "😎";
+    return "😎" + inputParam + "😎";
+  } else if (typeof inputParam === "number") {
+    inputParam *= 2;
+    inputParam.toString();
+    return "😎" + inputParam + "😎";
+  } else if (typeof inputParam === "boolean") {
+    if (inputParam === true) {
+      return "😎Yeah😎";
+    } else {
+      return "😎Chill😎";
+    }
+  } else return "😎Primitive values only😎";
 }
+console.log(coolMaker("Cool"));
+//your code here
 
 /******************************************************************************
 8.
@@ -179,9 +238,16 @@ Example3: (["One", "Two", "Three"], "Four") --> ["One", "Two", "Three", "Four"]
 Example4: (["One", "Two", "Three"], "Two") --> ["One", "Three"]
 ******************************************************************************/
 
-const addOrRemove = () => {
+const addOrRemove = (inputArray, inputString) => {
   //your code here
+  let stringIndex = inputArray.indexOf(inputString);
+  if (stringIndex !== -1) {
+    inputArray.splice(stringIndex, 1);
+  } else inputArray.push(inputString);
+  return inputArray;
 };
+
+console.log(addOrRemove(["Red", "Green", "Blue"], "Green"));
 
 /******************************************************************************
 ⬇️ FOR TESTING - DON'T TOUCH ⬇️
@@ -195,5 +261,5 @@ module.exports = {
   cleanAndFun,
   marvelEditor,
   coolMaker,
-  addOrRemove
+  addOrRemove,
 };
