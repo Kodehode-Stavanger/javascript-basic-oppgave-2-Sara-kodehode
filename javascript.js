@@ -68,7 +68,7 @@ The function should return:
 const greeter = (userName, dayTime) => {
   //your code here
   if (dayTime < 0 || dayTime > 23) {
-    return "invalid time";
+    return "Invalid time";
   } else if (dayTime >= 0 && dayTime <= 5) {
     return "Good night " + userName;
   } else if (dayTime >= 6 && dayTime <= 11) {
@@ -128,7 +128,7 @@ const cleanAndFun = (inputText) => {
   editedText = editedText.trim();
   return editedText;
 };
-console.log(cleanAndFun("  Javascript is hard   "));
+console.log(cleanAndFun("   hard        "));
 
 /******************************************************************************
 6.
